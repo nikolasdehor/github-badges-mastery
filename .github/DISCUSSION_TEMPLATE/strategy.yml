@@ -1,0 +1,208 @@
+title: "🎯 [STRATEGY] "
+labels: ["strategy", "discussion", "galaxy-brain"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🎯 Discussão de Estratégia para Badges
+        
+        Use este template para discutir estratégias específicas de conquista de badges, compartilhar experiências e obter feedback da comunidade.
+
+  - type: dropdown
+    id: target_badge
+    attributes:
+      label: 🏆 Badge Alvo
+      description: Qual badge esta estratégia visa conquistar?
+      options:
+        - 🦈 Pull Shark
+        - 👥 Pair Extraordinaire
+        - ⚙️ DevOps Guru
+        - 🧠 Galaxy Brain
+        - ⚡ Quickdraw
+        - ❤️ Heart On Your Sleeve
+        - 🎲 YOLO
+        - 🎯 Estratégia Geral (múltiplas badges)
+    validations:
+      required: true
+
+  - type: input
+    id: strategy_title
+    attributes:
+      label: 📝 Título da Estratégia
+      description: Um nome claro para sua estratégia
+      placeholder: "Ex: Automação de PRs para Pull Shark em 24h"
+    validations:
+      required: true
+
+  - type: textarea
+    id: strategy_overview
+    attributes:
+      label: 📋 Visão Geral da Estratégia
+      description: Descreva sua estratégia de forma resumida
+      placeholder: |
+        Resumo da estratégia:
+        - Objetivo principal
+        - Abordagem geral
+        - Tempo estimado para implementação
+        - Recursos necessários
+    validations:
+      required: true
+
+  - type: textarea
+    id: detailed_steps
+    attributes:
+      label: 🔄 Passos Detalhados
+      description: Detalhe os passos específicos da sua estratégia
+      placeholder: |
+        Passos da implementação:
+        1. Primeiro passo...
+        2. Segundo passo...
+        3. Terceiro passo...
+        
+        Para cada passo, inclua:
+        - Comandos específicos (se aplicável)
+        - Ferramentas necessárias
+        - Tempo estimado
+        - Possíveis obstáculos
+    validations:
+      required: true
+
+  - type: textarea
+    id: tools_and_resources
+    attributes:
+      label: 🛠️ Ferramentas e Recursos
+      description: Que ferramentas, scripts ou recursos são necessários?
+      placeholder: |
+        Liste as ferramentas necessárias:
+        - GitHub CLI
+        - Scripts específicos
+        - Configurações especiais
+        - Dependências externas
+        - Conhecimentos técnicos
+    validations:
+      required: true
+
+  - type: textarea
+    id: success_criteria
+    attributes:
+      label: ✅ Critérios de Sucesso
+      description: Como saber se a estratégia funcionou?
+      placeholder: |
+        Defina critérios claros de sucesso:
+        - Métricas específicas
+        - Indicadores de progresso
+        - Como verificar se a badge foi conquistada
+        - Sinais de que a estratégia está funcionando
+    validations:
+      required: true
+
+  - type: dropdown
+    id: difficulty_level
+    attributes:
+      label: 📊 Nível de Dificuldade
+      description: Qual o nível de dificuldade desta estratégia?
+      options:
+        - Iniciante (qualquer pessoa pode fazer)
+        - Intermediário (requer conhecimento básico de Git/GitHub)
+        - Avançado (requer conhecimento técnico)
+        - Expert (requer conhecimento profundo)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: time_investment
+    attributes:
+      label: ⏱️ Investimento de Tempo
+      description: Quanto tempo é necessário para implementar esta estratégia?
+      options:
+        - Rápido (menos de 1 hora)
+        - Moderado (1-4 horas)
+        - Demorado (meio dia)
+        - Extenso (1+ dias)
+    validations:
+      required: true
+
+  - type: textarea
+    id: pros_and_cons
+    attributes:
+      label: ⚖️ Prós e Contras
+      description: Quais são as vantagens e desvantagens desta estratégia?
+      placeholder: |
+        **Prós:**
+        - Vantagem 1
+        - Vantagem 2
+        - Vantagem 3
+        
+        **Contras:**
+        - Desvantagem 1
+        - Desvantagem 2
+        - Limitação 3
+    validations:
+      required: true
+
+  - type: textarea
+    id: personal_experience
+    attributes:
+      label: 💭 Experiência Pessoal
+      description: Você já testou esta estratégia? Compartilhe sua experiência
+      placeholder: |
+        Compartilhe sua experiência:
+        - Você já implementou esta estratégia?
+        - Que resultados obteve?
+        - Que obstáculos encontrou?
+        - Que modificações fez no processo?
+        - Dicas para outros implementarem
+    validations:
+      required: false
+
+  - type: textarea
+    id: variations_and_tips
+    attributes:
+      label: 🔧 Variações e Dicas
+      description: Existem variações desta estratégia ou dicas importantes?
+      placeholder: |
+        Dicas e variações:
+        - Adaptações para diferentes cenários
+        - Otimizações possíveis
+        - Armadilhas a evitar
+        - Dicas de troubleshooting
+        - Variações para diferentes níveis de experiência
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: strategy_type
+    attributes:
+      label: 🎨 Tipo de Estratégia
+      description: Como você classificaria esta estratégia?
+      options:
+        - label: Automação (usa scripts/workflows)
+        - label: Manual (passos manuais)
+        - label: Híbrida (combina automação e manual)
+        - label: Experimental (ainda em teste)
+        - label: Comprovada (já testada com sucesso)
+
+  - type: textarea
+    id: questions_for_community
+    attributes:
+      label: ❓ Perguntas para a Comunidade
+      description: Que perguntas você tem para a comunidade sobre esta estratégia?
+      placeholder: |
+        Perguntas para discussão:
+        - Alguém já tentou algo similar?
+        - Como vocês abordariam este problema?
+        - Que melhorias vocês sugerem?
+        - Que riscos vocês veem nesta abordagem?
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: sharing_permissions
+    attributes:
+      label: 📤 Permissões de Compartilhamento
+      description: Como esta estratégia pode ser compartilhada?
+      options:
+        - label: Pode ser incluída na documentação oficial
+        - label: Pode ser adaptada e modificada por outros
+        - label: Pode ser usada em outros projetos
+        - label: Pode ser referenciada em artigos/posts

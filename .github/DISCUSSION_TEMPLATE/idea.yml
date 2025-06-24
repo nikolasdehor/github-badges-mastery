@@ -1,0 +1,150 @@
+title: "💡 [IDEA] "
+labels: ["idea", "enhancement", "galaxy-brain"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 💡 Nova Ideia para GitHub Badges Mastery
+        
+        Obrigado por compartilhar sua ideia! Este template ajuda a estruturar sugestões para melhorar nosso projeto de conquista de badges.
+
+  - type: input
+    id: idea_title
+    attributes:
+      label: 🎯 Título da Ideia
+      description: Um título claro e conciso para sua ideia
+      placeholder: "Ex: Automatizar criação de PRs para Pull Shark"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem_description
+    attributes:
+      label: 🔍 Problema ou Oportunidade
+      description: Que problema esta ideia resolve ou que oportunidade ela explora?
+      placeholder: |
+        Descreva:
+        - Qual situação atual precisa ser melhorada
+        - Que oportunidade você identificou
+        - Como isso impacta a conquista de badges
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution_description
+    attributes:
+      label: 💡 Solução Proposta
+      description: Como você imagina que esta ideia funcionaria?
+      placeholder: |
+        Detalhe sua solução:
+        - Como funcionaria na prática
+        - Que tecnologias/ferramentas seriam usadas
+        - Passos de implementação
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: badge_impact
+    attributes:
+      label: 🏆 Impacto nas Badges
+      description: Quais badges esta ideia pode ajudar a conquistar?
+      options:
+        - label: 🦈 Pull Shark (PRs merged)
+        - label: 👥 Pair Extraordinaire (Co-autoria)
+        - label: ⚙️ DevOps Guru (GitHub Actions)
+        - label: 🧠 Galaxy Brain (Discussões)
+        - label: ⚡ Quickdraw (Issues/PRs rápidos)
+        - label: ❤️ Heart On Your Sleeve (Reações)
+        - label: 🎲 YOLO (Merges diretos)
+
+  - type: dropdown
+    id: implementation_difficulty
+    attributes:
+      label: 📊 Dificuldade de Implementação
+      description: Como você avalia a dificuldade de implementar esta ideia?
+      options:
+        - Fácil (1-2 horas)
+        - Médio (meio dia)
+        - Difícil (1-2 dias)
+        - Complexo (semana+)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority_level
+    attributes:
+      label: 🎯 Nível de Prioridade
+      description: Qual a prioridade desta ideia?
+      options:
+        - Baixa (nice to have)
+        - Média (importante)
+        - Alta (muito importante)
+        - Crítica (essencial)
+    validations:
+      required: true
+
+  - type: textarea
+    id: benefits
+    attributes:
+      label: ✅ Benefícios Esperados
+      description: Que benefícios esta ideia traria?
+      placeholder: |
+        Liste os benefícios:
+        - Para a conquista de badges
+        - Para a comunidade
+        - Para replicação por outros
+        - Para aprendizado
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 🔄 Alternativas Consideradas
+      description: Você pensou em outras formas de abordar este problema?
+      placeholder: |
+        Descreva alternativas que você considerou:
+        - Outras abordagens possíveis
+        - Por que escolheu esta solução
+        - Prós e contras de cada alternativa
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: 📋 Contexto Adicional
+      description: Qualquer informação adicional relevante
+      placeholder: |
+        Adicione qualquer contexto útil:
+        - Links para referências
+        - Exemplos de implementações similares
+        - Screenshots ou mockups
+        - Considerações técnicas específicas
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: contribution_willingness
+    attributes:
+      label: 🤝 Disposição para Contribuir
+      description: Como você gostaria de contribuir com esta ideia?
+      options:
+        - label: Posso ajudar com a implementação
+        - label: Posso ajudar com testes
+        - label: Posso ajudar com documentação
+        - label: Posso fornecer feedback durante desenvolvimento
+        - label: Apenas sugerindo a ideia
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: ✅ Confirmações
+      description: Confirme que você verificou os seguintes itens
+      options:
+        - label: Verifiquei se não existe uma discussão similar
+          required: true
+        - label: Esta ideia está alinhada com os objetivos do projeto
+          required: true
+        - label: Entendo que esta é uma sugestão e pode não ser implementada
+          required: true
