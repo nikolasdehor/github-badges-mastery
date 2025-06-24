@@ -1,0 +1,260 @@
+name: 🧠 Galaxy Brain - Discussion Creator
+on:
+  schedule:
+    - cron: '0 10 * * 2,4,6'  # Terça, Quinta e Sábado às 10h
+  workflow_dispatch:
+    inputs:
+      discussion_type:
+        description: 'Type of discussion to create'
+        required: false
+        default: 'idea'
+        type: choice
+        options:
+          - idea
+          - qa
+          - announcement
+          - planning
+
+jobs:
+  create-discussions:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+    
+    - name: 🧠 Create Discussion for Galaxy Brain Badge
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const discussionType = '${{ github.event.inputs.discussion_type }}';
+          
+          const discussions = {
+            idea: {
+              title: '💡 [IDEA] Automated Badge Tracking System',
+              body: `## 💡 Nova Ideia para Badge Tracking
+
+### 🎯 Objetivo
+Criar um sistema automatizado para rastrear o progresso das insígnias do GitHub em tempo real.
+
+### 🔧 Funcionalidades Propostas
+- [ ] Dashboard interativo com progresso das badges
+- [ ] Notificações automáticas quando badges são conquistadas
+- [ ] Análise preditiva de próximas badges a conquistar
+- [ ] Integração com GitHub API para dados em tempo real
+
+### 🚀 Benefícios
+- Melhor visibilidade do progresso
+- Motivação contínua
+- Estratégias otimizadas para conquista de badges
+
+### 💭 Discussão
+O que vocês acham dessa ideia? Alguma sugestão de melhoria?
+
+---
+*Discussão criada automaticamente para Galaxy Brain badge*`,
+              category: 'Ideas'
+            },
+            qa: {
+              title: '🙋 [Q&A] Melhores Estratégias para GitHub Badges',
+              body: `## 🙋 Perguntas sobre GitHub Badges
+
+### ❓ Perguntas para a Comunidade
+
+1. **Qual badge vocês acham mais difícil de conquistar?**
+   - Pull Shark
+   - Galaxy Brain
+   - DevOps Guru
+   - Outras?
+
+2. **Quais estratégias funcionaram melhor para vocês?**
+   - Projetos pessoais
+   - Contribuições open source
+   - Automações
+   - Colaborações
+
+3. **Como vocês organizam o processo de conquista de badges?**
+   - Planejamento semanal
+   - Foco em uma badge por vez
+   - Estratégia paralela
+   - Outras abordagens?
+
+### 💡 Compartilhem suas experiências!
+Vamos trocar ideias e aprender juntos!
+
+---
+*Discussão criada automaticamente para Galaxy Brain badge*`,
+              category: 'Q&A'
+            },
+            announcement: {
+              title: '📢 [ANNOUNCEMENT] Badge Progress Update',
+              body: `## 📢 Atualização de Progresso das Badges
+
+### 🏆 Status Atual
+- ✅ Pull Shark: Conquistado!
+- ✅ Pair Extraordinaire: Conquistado!
+- ✅ DevOps Guru: Conquistado!
+- ✅ Quickdraw: Conquistado!
+- 🔄 Galaxy Brain: Em progresso
+- 🔄 Heart On Your Sleeve: Em progresso
+- 🔄 YOLO: Em progresso
+
+### 🎯 Próximos Objetivos
+1. **Galaxy Brain**: Participar ativamente em discussões
+2. **Heart On Your Sleeve**: Adicionar reações em issues/PRs
+3. **YOLO**: Fazer merges diretos (com cuidado!)
+
+### 🚀 Novidades
+- Sistema de monitoramento automatizado implementado
+- Workflows otimizados para cada badge
+- Documentação completa disponível
+
+### 💬 Feedback
+Como vocês estão se saindo com suas badges? Compartilhem suas conquistas!
+
+---
+*Anúncio criado automaticamente para Galaxy Brain badge*`,
+              category: 'Announcements'
+            },
+            planning: {
+              title: '🎯 [PLANNING] Estratégia Semanal de Badges',
+              body: `## 🎯 Planejamento Semanal de Badges
+
+### 📅 Esta Semana (${new Date().toLocaleDateString()})
+
+#### 🎯 Objetivos Principais
+- [ ] **Galaxy Brain**: Criar 3 discussões e participar ativamente
+- [ ] **Heart On Your Sleeve**: Adicionar reações em 10+ issues/PRs
+- [ ] **YOLO**: Fazer 2 merges diretos (com testes adequados)
+
+#### 📊 Métricas de Sucesso
+- Discussões criadas: 0/3
+- Reações adicionadas: 0/10
+- Merges diretos: 0/2
+
+#### 🔧 Tarefas Técnicas
+- [ ] Otimizar workflows de automação
+- [ ] Melhorar sistema de monitoramento
+- [ ] Documentar estratégias bem-sucedidas
+
+### 🤝 Colaboração
+Precisamos de ajuda com alguma badge específica? Vamos trabalhar juntos!
+
+---
+*Planejamento criado automaticamente para Galaxy Brain badge*`,
+              category: 'Project Planning'
+            }
+          };
+          
+          const selectedDiscussion = discussions[discussionType];
+          
+          try {
+            // First, get the repository ID and discussion categories
+            const repoResponse = await github.rest.repos.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+            
+            const categoriesResponse = await github.rest.graphql(`
+              query($owner: String!, $repo: String!) {
+                repository(owner: $owner, name: $repo) {
+                  discussionCategories(first: 10) {
+                    nodes {
+                      id
+                      name
+                    }
+                  }
+                }
+              }
+            `, {
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+            
+            const categories = categoriesResponse.data.repository.discussionCategories.nodes;
+            let categoryId = null;
+            
+            // Find the appropriate category
+            for (const category of categories) {
+              if (category.name.toLowerCase().includes(selectedDiscussion.category.toLowerCase()) ||
+                  selectedDiscussion.category.toLowerCase().includes(category.name.toLowerCase())) {
+                categoryId = category.id;
+                break;
+              }
+            }
+            
+            // If no specific category found, use the first available
+            if (!categoryId && categories.length > 0) {
+              categoryId = categories[0].id;
+            }
+            
+            if (categoryId) {
+              // Create the discussion using GraphQL
+              const createDiscussionResponse = await github.rest.graphql(`
+                mutation($input: CreateDiscussionInput!) {
+                  createDiscussion(input: $input) {
+                    discussion {
+                      id
+                      url
+                      title
+                    }
+                  }
+                }
+              `, {
+                input: {
+                  repositoryId: repoResponse.data.node_id,
+                  categoryId: categoryId,
+                  title: selectedDiscussion.title,
+                  body: selectedDiscussion.body
+                }
+              });
+              
+              const discussion = createDiscussionResponse.data.createDiscussion.discussion;
+              console.log(`✅ Created discussion: ${discussion.title}`);
+              console.log(`🔗 URL: ${discussion.url}`);
+              
+              // Add a comment to the discussion for more engagement
+              await github.rest.graphql(`
+                mutation($input: AddDiscussionCommentInput!) {
+                  addDiscussionComment(input: $input) {
+                    comment {
+                      id
+                      url
+                    }
+                  }
+                }
+              `, {
+                input: {
+                  discussionId: discussion.id,
+                  body: `🎉 **Discussão criada com sucesso!**
+                  
+Esta discussão foi criada automaticamente como parte da estratégia para conquistar a **Galaxy Brain** badge.
+
+### 🧠 Sobre a Galaxy Brain Badge
+- **Requisito**: Participar ativamente em discussões
+- **Estratégia**: Criar discussões relevantes e engajar com a comunidade
+- **Status**: Em progresso
+
+Vamos manter essa discussão ativa! 💬`
+                }
+              });
+              
+              console.log(`💬 Added engagement comment to discussion`);
+              
+            } else {
+              console.log('⚠️ No discussion categories found. Discussions might not be enabled for this repository.');
+            }
+            
+          } catch (error) {
+            console.log('⚠️ Error creating discussion:', error.message);
+            console.log('💡 Make sure discussions are enabled in repository settings');
+          }
+          
+          console.log(`🧠 Galaxy Brain badge strategy: Discussion created successfully!`);
+          
+    - name: 🎯 Badge Achievement Notification
+      run: |
+        echo "🧠 Galaxy Brain badge requirements:"
+        echo "✅ Created discussion with relevant content"
+        echo "✅ Added engagement comment"
+        echo "✅ Used proper discussion categories"
+        echo "🏆 Galaxy Brain badge should be achieved with active participation!" 

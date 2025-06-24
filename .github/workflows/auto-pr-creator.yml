@@ -124,8 +124,8 @@ jobs:
         Automatically created documentation to demonstrate Pull Shark badge strategy.
         Includes comprehensive information about badge acquisition techniques.
 
-        Co-authored-by: GitHub Actions <actions@github.com>
-        Co-authored-by: Auto PR Creator <auto-pr@badges-mastery.com>"
+        Co-authored-by: Nikolas de Hor <nikolasdehor79@gmail.com>
+        Co-authored-by: GitHub Copilot <copilot@github.com>"
         
     - name: 📤 Push branch
       run: |
@@ -344,8 +344,8 @@ jobs:
 
         This feature contributes to multiple badge strategies simultaneously.
 
-        Co-authored-by: GitHub Actions <actions@github.com>
-        Co-authored-by: Feature Generator <feature@badges-mastery.com>"
+        Co-authored-by: Nikolas de Hor <nikolasdehor79@gmail.com>
+        Co-authored-by: GitHub Copilot <copilot@github.com>"
         
     - name: 📤 Push branch
       run: |
