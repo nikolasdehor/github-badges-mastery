@@ -1,0 +1,119 @@
+title: "🧠 [GALAXY BRAIN] Estratégia para Maximizar GitHub Badges"
+labels: ["galaxy-brain", "strategy", "badges", "github-mastery"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # 🌌 Galaxy Brain Discussion - Badge Strategy
+        
+        Esta discussão foi criada especificamente para conquistar a **Galaxy Brain** badge através de uma discussão valiosa sobre estratégias de badges do GitHub.
+        
+        ## 🎯 Objetivo
+        Compartilhar insights e estratégias comprovadas para conquistar o máximo de badges do GitHub.
+        
+        ---
+  
+  - type: dropdown
+    id: badge-category
+    attributes:
+      label: "📊 Categoria de Badge"
+      description: "Qual categoria de badge você quer discutir?"
+      options:
+        - "🦈 Contribution Badges (Pull Shark, etc.)"
+        - "🤝 Collaboration Badges (Pair Extraordinaire)"
+        - "⚙️ Technical Badges (DevOps Guru)"
+        - "💬 Community Badges (Galaxy Brain)"
+        - "⚡ Speed Badges (Quickdraw)"
+        - "🎲 Risk Badges (YOLO)"
+        - "❤️ Engagement Badges (Heart On Your Sleeve)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: strategy
+    attributes:
+      label: "🚀 Sua Estratégia"
+      description: "Descreva sua estratégia específica para conquistar esta badge"
+      placeholder: |
+        Exemplo:
+        - Para Pull Shark: Criei múltiplos PRs com funcionalidades reais
+        - Para Pair Extraordinaire: Usei co-autoria em todos os commits
+        - Para DevOps Guru: Implementei workflows automatizados...
+      value: |
+        ## Minha Estratégia Detalhada:
+        
+        ### 🎯 Badge Alvo:
+        [Nome da badge]
+        
+        ### 📋 Passos Executados:
+        1. [ ] Passo 1
+        2. [ ] Passo 2
+        3. [ ] Passo 3
+        
+        ### 💡 Insights Descobertos:
+        - Insight 1
+        - Insight 2
+        
+        ### ⚠️ Desafios Enfrentados:
+        - Desafio 1 e como resolvi
+        - Desafio 2 e solução encontrada
+        
+        ### 🏆 Resultado:
+        [Status da conquista]
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: sharing-permission
+    attributes:
+      label: "📢 Permissões de Compartilhamento"
+      description: "Como você gostaria que sua estratégia fosse compartilhada?"
+      options:
+        - label: "✅ Pode ser compartilhada publicamente como exemplo"
+        - label: "📝 Pode ser incluída em documentação do projeto"
+        - label: "🎓 Pode ser usada para ajudar outros desenvolvedores"
+        - label: "⭐ Considero esta estratégia como 'best practice'"
+
+  - type: textarea
+    id: additional-tips
+    attributes:
+      label: "💎 Dicas Extras e Recursos"
+      description: "Compartilhe recursos, ferramentas ou dicas que ajudaram"
+      placeholder: |
+        - GitHub CLI commands úteis
+        - Scripts de automação
+        - Recursos de documentação
+        - Ferramentas específicas
+        - Timing ideal para execução
+      value: |
+        ## 🛠️ Ferramentas Utilizadas:
+        - [ ] GitHub CLI
+        - [ ] GitHub Actions
+        - [ ] Scripts personalizados
+        - [ ] Automações específicas
+        
+        ## 📚 Recursos Consultados:
+        - [ ] Documentação oficial
+        - [ ] Exemplos da comunidade
+        - [ ] Tutorials específicos
+        
+        ## ⏰ Timing e Frequência:
+        - Melhor horário para execução:
+        - Frequência recomendada:
+        - Duração total do processo:
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ## 🌟 Meta desta Discussão
+        
+        Esta discussão visa criar uma **knowledge base colaborativa** sobre estratégias efetivas para badges do GitHub. Quanto mais detalhada e útil for sua contribuição, maior o valor para toda a comunidade!
+        
+        ### 🎯 Critérios para Galaxy Brain Badge:
+        - ✅ Discussão aceita/reconhecida pela comunidade
+        - ✅ Conteúdo valioso e bem estruturado
+        - ✅ Engajamento construtivo com outros participantes
+        
+        **Lembre-se:** O objetivo é criar valor real, não apenas conquistar a badge! 🚀 
