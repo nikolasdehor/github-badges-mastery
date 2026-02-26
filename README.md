@@ -1,110 +1,121 @@
-# 🏆 GitHub Badges Mastery
+# GitHub Badges Mastery
 
-Um repositório dedicado para conquistar todas as insígnias possíveis do GitHub usando estratégias inteligentes e projetos pessoais.
+Repositorio dedicado para conquistar sistematicamente todas as insignias (badges) do GitHub.
 
-## 🎯 Objetivo
+## Status das Badges
 
-Conquistar sistematicamente as seguintes insígnias do GitHub:
-- 🦈 **Pull Shark** - 2+ PRs merged
-- 👥 **Pair Extraordinaire** - Co-autoria em commits
-- ⚙️ **DevOps Guru** - GitHub Actions
-- 🧠 **Galaxy Brain** - Discussões aceitas
-- 🎲 **YOLO** - Merge sem review
-- ⚡ **Quickdraw** - Issue/PR em 5min
-- ❤️ **Heart On Your Sleeve** - Reações em issues
+| Badge | Status | Criterio Real | Como Conseguir |
+|-------|--------|---------------|----------------|
+| Pull Shark | **Conquistada** | 2+ PRs merged em repositorio de outra pessoa | PRs aceitos em repos de terceiros |
+| Quickdraw | **Conquistada** | Fechar issue/PR em <5min | Issue #4 fechada em <5min |
+| Pair Extraordinaire | Em progresso | PR merged com commits co-autorados | Commit com `Co-authored-by` em PR merged |
+| YOLO | Em progresso | Merge de PR sem code review | Criar PR e merge sem review |
+| Galaxy Brain | Pendente | 2 respostas aceitas em Discussions | Habilitar Discussions e responder perguntas |
+| Heart On Your Sleeve | Pendente | Reagir em Discussion posts | Habilitar Discussions e reagir a posts |
+| DevOps Guru | Em progresso | Workflow reutilizado por outro repo | Publicar GitHub Action reutilizavel |
 
-## 📊 Status Atual
+**Progresso: 2/7 conquistadas (29%)**
 
-| Insígnia | Status | Progresso | Data Alvo |
-|----------|--------|-----------|-----------|
-| � Pair Extraordinaire | 🔄 Pronto para conquistar | Workflows configurados | Hoje |
-| ⚙️ DevOps Guru | 🔄 Pronto para conquistar | 7 workflows ativos | Hoje |
-| ⚡ Quickdraw | 🔄 Pronto para conquistar | Auto-issues configurado | Hoje |
-| ❤️ Heart On Your Sleeve | 🔄 Pronto para conquistar | Auto-reactions ativo | Hoje |
-| 🎲 YOLO | 🔄 Pronto para conquistar | YOLO workflow pronto | Hoje |
-| 🦈 Pull Shark | 🔄 Em configuração | 0/2 PRs (workflow pronto) | 1-2 dias |
-| 🧠 Galaxy Brain | 🔄 Templates prontos | Precisa habilitar discussions | 1 dia |
+## Detalhes de Cada Badge
 
-**🎯 STATUS GERAL: 6/7 badges prontos para conquista imediata!**
+### Pull Shark - Conquistada
 
-## 🗂️ Estrutura do Projeto
+- **Criterio:** Ter pull requests aceitos (merged) em repositorios de outros usuarios
+- **Tiers:** Bronze (2), Silver (16), Gold (128), Diamond (1024)
+- **Status:** Bronze conquistado com PRs merged
+
+### Quickdraw - Conquistada
+
+- **Criterio:** Fechar um issue ou PR em menos de 5 minutos apos abri-lo
+- **Status:** Conquistada via issue #4
+
+### Pair Extraordinaire - Em Progresso
+
+- **Criterio:** Ter um PR merged que contenha commits com `Co-authored-by` no trailer
+- **Tiers:** Bronze (1), Silver (10), Gold (24), Diamond (48)
+- **Proximo passo:** Fazer merge de PR com commits co-autorados neste repo
+- **Formato do trailer:**
+  ```
+  Co-authored-by: Nome <email@example.com>
+  ```
+
+### YOLO - Em Progresso
+
+- **Criterio:** Fazer merge de um PR sem nenhum review
+- **Proximo passo:** Criar PR e mergear imediatamente sem review
+- **Nota:** Funciona apenas se o repo nao exigir review obrigatorio
+
+### Galaxy Brain - Pendente
+
+- **Criterio:** Ter 2 respostas marcadas como "Accepted Answer" em GitHub Discussions
+- **Tiers:** Bronze (2), Silver (8), Gold (16), Diamond (32)
+- **Prerequisito:** Habilitar GitHub Discussions em Settings > General > Features
+- **Proximo passo:**
+  1. Ir em Settings > General > Features > marcar "Discussions"
+  2. Criar uma Discussion do tipo Q&A
+  3. Responder e marcar como "Accepted Answer"
+
+### Heart On Your Sleeve - Pendente
+
+- **Criterio:** Reagir com emoji a posts em GitHub Discussions
+- **Prerequisito:** GitHub Discussions habilitado
+- **Proximo passo:** Reagir a Discussion posts com emojis
+
+### DevOps Guru - Em Progresso
+
+- **Criterio:** Ter um workflow GitHub Actions que seja reutilizado por outro repositorio
+- **Proximo passo:** Publicar uma GitHub Action reutilizavel ou ter workflow adotado
+- **Nota:** 8 workflows locais estao configurados, mas a badge exige uso externo
+
+## Estrutura do Projeto
 
 ```
 github-badges-mastery/
 ├── .github/
-│   ├── workflows/          # GitHub Actions para DevOps Guru
-│   ├── ISSUE_TEMPLATE/     # Templates para issues
-│   └── DISCUSSION_TEMPLATE/ # Templates para discussões
-├── docs/                   # Documentação do projeto
-├── src/                    # Código fonte
-├── tests/                  # Testes automatizados
-├── scripts/                # Scripts de automação
-└── examples/               # Exemplos práticos
+│   ├── workflows/           # 8 GitHub Actions workflows
+│   ├── ISSUE_TEMPLATE/      # Templates para issues
+│   └── DISCUSSION_TEMPLATE/ # Templates para discussions
+├── src/
+│   └── index.js             # Badge tracker principal
+├── tests/
+│   └── index.test.js        # 18 testes unitarios
+├── scripts/                 # Scripts de automacao
+├── docs/                    # Documentacao detalhada
+└── package.json
 ```
 
-## 🚀 Como Usar Este Repositório
+## Como Usar
 
-### 🏃‍♂️ Início Rápido (15 minutos)
+```bash
+# Ver status das badges
+npm start
 
-1. **📊 Verificar Status Atual**
-   ```powershell
-   .\scripts\badge-monitor-complete.ps1 -ShowQuickCommands
-   ```
+# Rodar testes (18 testes)
+npm test
 
-2. **⚡ Conquistar 5 Badges Imediatamente**   ```bash
-   # 👥 Pair Extraordinaire (commit co-autorado)
-   git commit -m "feat: setup complete" -m "Co-authored-by: Nikolas de Hor <nikolasdehor79@gmail.com>"
-   
-   # ⚙️ DevOps Guru + ⚡ Quickdraw + ❤️ Heart On Your Sleeve + 🎲 YOLO
-   gh workflow run quickdraw-issues.yml
-   gh workflow run yolo-merge.yml  
-   gh workflow run ci.yml
-   ```
+# Build
+npm run build
+```
 
-3. **🦈 Pull Shark + 🧠 Galaxy Brain (1-2 dias)**
-   - Habilitar Discussions nas configurações do repo
-   - Criar 2 PRs usando os workflows automatizados
-   - Participar de discussões
+## Workflows Disponiveis
 
-### 📋 Guia Completo
-Veja o **[Guia de Execução Detalhado](docs/execution-guide.md)** para instruções passo a passo.
+| Workflow | Comando | Proposito |
+|----------|---------|-----------|
+| CI/CD Pipeline | `gh workflow run ci.yml` | Testes + build |
+| YOLO Merge | `gh workflow run yolo-merge.yml` | Merge direto sem review |
+| Quickdraw Issues | `gh workflow run quickdraw-issues.yml` | Criar issues automaticamente |
+| Pair Programming | `gh workflow run pair-programming.yml` | Commits co-autorados |
+| Badge Monitor | `gh workflow run badge-monitor.yml` | Monitorar progresso |
 
-### 🛠️ Workflows Disponíveis
+## Acoes Manuais Necessarias
 
-| Workflow | Badge | Comando |
-|----------|-------|---------|
-| `ci.yml` | ⚙️ DevOps Guru | `gh workflow run ci.yml` |
-| `quickdraw-issues.yml` | ⚡ Quickdraw + ❤️ Heart | `gh workflow run quickdraw-issues.yml` |
-| `yolo-merge.yml` | 🎲 YOLO | `gh workflow run yolo-merge.yml` |
-| `pair-programming.yml` | 👥 Pair + 🦈 Pull Shark | `gh workflow run pair-programming.yml` |
-| `badge-monitor.yml` | 📊 Monitoramento | `gh workflow run badge-monitor.yml` |
+Algumas badges precisam de acoes manuais no GitHub:
 
-## 📈 Progresso em Tempo Real
+1. **Galaxy Brain + Heart On Your Sleeve:** Habilitar Discussions em Settings > General > Features
+2. **YOLO:** Desabilitar branch protection rules (se houver) para permitir merge sem review
+3. **Pair Extraordinaire:** Fazer merge do PR com commits co-autorados
+4. **DevOps Guru:** Publicar workflow como GitHub Action reutilizavel
 
-🎯 **Meta:** Conquistar todas as 7 insígnias do GitHub  
-⏱️ **Tempo estimado:** 1-2 horas de trabalho ativo  
-🏆 **Taxa de sucesso:** 100% seguindo os workflows  
+## Licenca
 
-### 🔥 Status Atual: SISTEMA COMPLETO E OTIMIZADO!
-
-✅ **7 workflows automatizados** configurados  
-✅ **Templates profissionais** para issues e discussões  
-✅ **Sistema de monitoramento** avançado implementado  
-✅ **Scripts PowerShell** para Windows otimizados  
-✅ **Guia de execução** detalhado disponível  
-
-### ⚡ Próximos Passos Imediatos
-
-1. **Executar workflows** para conquistar 5 badges hoje
-2. **Habilitar discussions** no repositório  
-3. **Criar 2 PRs** para completar Pull Shark
-4. **Monitorar progresso** automaticamente
-
----
-
-**🚨 IMPORTANTE:** Este repositório está 100% configurado e pronto para conquistar badges imediatamente! Siga o [Guia de Execução](docs/execution-guide.md) para resultados garantidos.
-
-**Última atualização:** $(date)  
-**Sistema implementado:** ✅ COMPLETO  
-**Badges configurados:** 7/7  
-**Automação:** ✅ TOTAL
+MIT
