@@ -1,193 +1,162 @@
-// 🏆 GitHub Badges Mastery - Arquivo Principal
-// Projeto dedicado para conquistar todas as insígnias do GitHub
+// GitHub Badges Mastery - Arquivo Principal
+// Projeto dedicado para conquistar todas as insignias do GitHub
 
-console.log('🚀 GitHub Badges Mastery iniciado!');
-console.log('📅 Data:', new Date().toLocaleDateString('pt-BR'));
+const BADGE_DEFINITIONS = [
+    {
+        id: 'pull-shark',
+        name: 'Pull Shark',
+        criteria: '2+ Pull Requests merged',
+        strategy: 'Criar branches tematicas e PRs estruturados',
+        status: 'completed',
+        tier: 'bronze',
+        tiers: { bronze: 2, silver: 16, gold: 128, diamond: 1024 }
+    },
+    {
+        id: 'pair-extraordinaire',
+        name: 'Pair Extraordinaire',
+        criteria: 'Co-autoria em commits via PR merged',
+        strategy: 'Commits colaborativos com co-autores em PRs',
+        status: 'in-progress',
+        tier: null,
+        tiers: { bronze: 1, silver: 10, gold: 24, diamond: 48 }
+    },
+    {
+        id: 'devops-guru',
+        name: 'DevOps Guru',
+        criteria: 'GitHub Actions workflow usado por outro repo',
+        strategy: 'Publicar actions reutilizaveis ou ter workflow adotado',
+        status: 'in-progress',
+        tier: null,
+        tiers: { bronze: 1 }
+    },
+    {
+        id: 'galaxy-brain',
+        name: 'Galaxy Brain',
+        criteria: 'Resposta aceita em Discussions',
+        strategy: 'Habilitar Discussions e responder com qualidade',
+        status: 'pending',
+        tier: null,
+        tiers: { bronze: 2, silver: 8, gold: 16, diamond: 32 }
+    },
+    {
+        id: 'quickdraw',
+        name: 'Quickdraw',
+        criteria: 'Issue/PR fechado em menos de 5 minutos',
+        strategy: 'Fechar issue ou PR rapidamente apos abrir',
+        status: 'completed',
+        tier: null,
+        tiers: { bronze: 1 }
+    },
+    {
+        id: 'heart-on-your-sleeve',
+        name: 'Heart On Your Sleeve',
+        criteria: 'Reagir com emoji em Discussions',
+        strategy: 'Habilitar Discussions e reagir a posts',
+        status: 'pending',
+        tier: null,
+        tiers: { bronze: 1 }
+    },
+    {
+        id: 'yolo',
+        name: 'YOLO',
+        criteria: 'Merge de PR sem code review',
+        strategy: 'Criar PR e fazer merge sem review',
+        status: 'in-progress',
+        tier: null,
+        tiers: { bronze: 1 }
+    }
+];
 
-/**
- * Função para demonstrar funcionalidades do projeto
- */
-function demonstrateBadges() {
-    console.log('\n📊 Monitorando progresso das badges...\n');
-    
-    const badges = [
-        {
-            name: '🦈 Pull Shark',
-            criteria: '2+ Pull Requests merged',
-            strategy: 'Criar branches temáticas e PRs estruturados',
-            status: '🔄 Em progresso'
-        },
-        {
-            name: '👥 Pair Extraordinaire',
-            criteria: 'Co-autoria em commits',
-            strategy: 'Commits colaborativos com co-autores',
-            status: '🔄 Em progresso'
-        },
-        {
-            name: '⚙️ DevOps Guru',
-            criteria: 'GitHub Actions configuradas',
-            strategy: 'Workflows automatizados de CI/CD',
-            status: '🔄 Em progresso'
-        },
-        {
-            name: '🧠 Galaxy Brain',
-            criteria: 'Discussões aceitas',
-            strategy: 'Sistema de discussões estruturadas',
-            status: '⏳ Pendente'
-        },
-        {
-            name: '⚡ Quickdraw',
-            criteria: 'Issue/PR criado em menos de 5 minutos',
-            strategy: 'Automação de criação de issues',
-            status: '🔄 Em progresso'
-        },
-        {
-            name: '❤️ Heart On Your Sleeve',
-            criteria: 'Reações em issues/PRs',
-            strategy: 'Sistema de engajamento com emojis',
-            status: '⏳ Pendente'
-        },
-        {
-            name: '🎲 YOLO',
-            criteria: 'Merge sem review',
-            strategy: 'Merges diretos controlados',
-            status: '⏳ Pendente'
-        }
-    ];
-    
-    badges.forEach((badge, index) => {
-        console.log(`${index + 1}. ${badge.name}`);
-        console.log(`   Critério: ${badge.criteria}`);
-        console.log(`   Estratégia: ${badge.strategy}`);
-        console.log(`   Status: ${badge.status}\n`);
-    });
-    
-    return badges;
+function getBadges() {
+    return BADGE_DEFINITIONS.map(b => ({ ...b }));
 }
 
-/**
- * Função para calcular progresso geral
- */
-function calculateProgress() {
-    const badges = demonstrateBadges();
-    const total = badges.length;
-    const inProgress = badges.filter(b => b.status.includes('progresso')).length;
-    const completed = badges.filter(b => b.status.includes('✅')).length;
-    const pending = badges.filter(b => b.status.includes('Pendente')).length;
-    
-    console.log('📈 RESUMO DO PROGRESSO:');
-    console.log(`Total de badges: ${total}`);
-    console.log(`Em progresso: ${inProgress}`);
-    console.log(`Concluídas: ${completed}`);
-    console.log(`Pendentes: ${pending}`);
-    console.log(`Progresso: ${Math.round((completed / total) * 100)}%`);
-    
+function calculateProgress(badges) {
+    const list = badges || getBadges();
+    const total = list.length;
+    const completed = list.filter(b => b.status === 'completed').length;
+    const inProgress = list.filter(b => b.status === 'in-progress').length;
+    const pending = list.filter(b => b.status === 'pending').length;
+
     return {
         total,
-        inProgress,
         completed,
+        inProgress,
         pending,
         percentage: Math.round((completed / total) * 100)
     };
 }
 
-/**
- * Função para gerar relatório de status
- */
-function generateStatusReport() {
-    console.log('\n📋 GERANDO RELATÓRIO DE STATUS...\n');
-    
-    const timestamp = new Date().toISOString();
-    const progress = calculateProgress();
-    
-    const report = {
-        timestamp,
+function generateStatusReport(badges) {
+    const list = badges || getBadges();
+    const progress = calculateProgress(list);
+
+    return {
+        timestamp: new Date().toISOString(),
         project: 'GitHub Badges Mastery',
-        version: '1.0.0',
+        version: '2.0.0',
         progress,
-        nextSteps: [
-            'Criar mais PRs para Pull Shark',
-            'Habilitar discussões para Galaxy Brain',
-            'Implementar sistema de reações',
-            'Configurar merges diretos para YOLO'
-        ],
-        recommendations: [
-            'Execute workflows regularmente',
-            'Monitore progresso semanalmente',
-            'Documente estratégias bem-sucedidas',
-            'Automatize processos repetitivos'
-        ]
+        badges: list,
+        nextSteps: list
+            .filter(b => b.status !== 'completed')
+            .map(b => `${b.name}: ${b.strategy}`)
     };
-    
-    console.log('📊 Relatório gerado:', JSON.stringify(report, null, 2));
+}
+
+function getBadgeById(id) {
+    return BADGE_DEFINITIONS.find(b => b.id === id) || null;
+}
+
+function getCompletedBadges() {
+    return BADGE_DEFINITIONS.filter(b => b.status === 'completed');
+}
+
+function getPendingBadges() {
+    return BADGE_DEFINITIONS.filter(b => b.status !== 'completed');
+}
+
+function printReport() {
+    const report = generateStatusReport();
+    const p = report.progress;
+
+    console.log('GitHub Badges Mastery - Status Report');
+    console.log('='.repeat(45));
+    console.log(`Data: ${new Date().toLocaleDateString('pt-BR')}`);
+    console.log(`Progresso: ${p.completed}/${p.total} (${p.percentage}%)`);
+    console.log('');
+
+    report.badges.forEach(badge => {
+        const icon = badge.status === 'completed' ? '[x]'
+            : badge.status === 'in-progress' ? '[-]'
+            : '[ ]';
+        const tierInfo = badge.tier ? ` (${badge.tier})` : '';
+        console.log(`  ${icon} ${badge.name}${tierInfo} - ${badge.criteria}`);
+    });
+
+    if (report.nextSteps.length > 0) {
+        console.log('');
+        console.log('Proximos passos:');
+        report.nextSteps.forEach((step, i) => {
+            console.log(`  ${i + 1}. ${step}`);
+        });
+    }
+
+    console.log('');
+    console.log(`Completadas: ${p.completed} | Em progresso: ${p.inProgress} | Pendentes: ${p.pending}`);
     return report;
 }
 
-/**
- * Função para simular atividade de badge
- */
-function simulateBadgeActivity() {
-    console.log('\n🎯 SIMULANDO ATIVIDADE PARA BADGES...\n');
-    
-    // Simular atividade Pull Shark
-    console.log('🦈 Simulando atividade Pull Shark...');
-    console.log('   - Branch criada: feature/nova-funcionalidade');
-    console.log('   - Commits adicionados com co-autoria');
-    console.log('   - PR criado e pronto para merge');
-    
-    // Simular atividade DevOps Guru
-    console.log('\n⚙️ Simulando atividade DevOps Guru...');
-    console.log('   - Workflow CI/CD executado');
-    console.log('   - Testes automatizados rodando');
-    console.log('   - Deploy automatizado configurado');
-    
-    // Simular atividade Quickdraw
-    console.log('\n⚡ Simulando atividade Quickdraw...');
-    console.log('   - Issue criada automaticamente');
-    console.log('   - Tempo de criação: < 5 minutos');
-    console.log('   - Template aplicado com sucesso');
-    
-    console.log('\n✅ Simulação concluída!');
-}
-
-/**
- * Função principal
- */
-function main() {
-    console.log('🎯 EXECUTANDO GITHUB BADGES MASTERY\n');
-    
-    try {
-        // Demonstrar badges
-        demonstrateBadges();
-        
-        // Calcular progresso
-        calculateProgress();
-        
-        // Gerar relatório
-        generateStatusReport();
-        
-        // Simular atividade
-        simulateBadgeActivity();
-        
-        console.log('\n🎉 Execução concluída com sucesso!');
-        console.log('💡 Dica: Execute "npm run badges" para monitorar progresso');
-        
-    } catch (error) {
-        console.error('❌ Erro durante execução:', error);
-        process.exit(1);
-    }
-}
-
-// Executar se for o arquivo principal
 if (require.main === module) {
-    main();
+    printReport();
 }
 
-// Exportar funções para testes
 module.exports = {
-    demonstrateBadges,
+    BADGE_DEFINITIONS,
+    getBadges,
     calculateProgress,
     generateStatusReport,
-    simulateBadgeActivity,
-    main
+    getBadgeById,
+    getCompletedBadges,
+    getPendingBadges,
+    printReport
 };
