@@ -1,18 +1,18 @@
 {
   "name": "github-badges-mastery",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Projeto sistemático para conquistar todas as insígnias do GitHub usando estratégias inteligentes e automação",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "test": "echo \"✅ All tests passed!\" && exit 0",
-    "build": "echo '🏗️ Building project...' && node src/index.js",
+    "test": "node tests/index.test.js",
+    "build": "node src/index.js",
     "badges": "bash scripts/badge-monitor.sh",
     "setup": "bash scripts/setup-badges.sh",
     "dev": "node src/index.js",
     "monitor": "bash scripts/badge-monitor.sh",
-    "lint": "echo '🔍 Linting code...' && echo 'No linter configured yet'",
-    "format": "echo '✨ Formatting code...' && echo 'No formatter configured yet'",
+    "lint": "node -c src/index.js && echo 'Lint passed'",
+    "format": "echo 'No formatter configured'",
     "ci": "npm test && npm run build",
     "precommit": "npm run lint && npm test"
   },
@@ -51,8 +51,8 @@
   "badges": {
     "pullShark": {
       "target": 2,
-      "current": 0,
-      "status": "in-progress"
+      "current": 2,
+      "status": "completed"
     },
     "pairExtraordinaire": {
       "target": 1,
@@ -65,14 +65,14 @@
       "status": "in-progress"
     },
     "galaxyBrain": {
-      "target": 1,
+      "target": 2,
       "current": 0,
       "status": "pending"
     },
     "quickdraw": {
       "target": 1,
-      "current": 0,
-      "status": "in-progress"
+      "current": 1,
+      "status": "completed"
     },
     "heartOnYourSleeve": {
       "target": 1,
@@ -82,7 +82,7 @@
     "yolo": {
       "target": 1,
       "current": 0,
-      "status": "pending"
+      "status": "in-progress"
     }
   }
 }
